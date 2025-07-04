@@ -3,6 +3,7 @@ import routes from "./routes/route";
 import cors from "cors";
 import CorsConfig from "./configs/corsConfig";
 import { rateLimiter } from "./configs/requestLimiter";
+import { haltOnTimeout, requestTimeout } from "./configs/requestTimeOutHandler";
 
 const app = express();
 const PORT = 8080;
@@ -10,6 +11,8 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cors(CorsConfig));
 app.use(rateLimiter);
+app.use(requestTimeout);
+app.use(haltOnTimeout);
 //routes
 app.use(routes);
 app.listen(PORT, () => {
