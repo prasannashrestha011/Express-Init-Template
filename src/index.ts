@@ -11,10 +11,11 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cors(CorsConfig));
 app.use(rateLimiter);
-app.use(requestTimeout);
-app.use(haltOnTimeout);
 //routes
 app.use(routes);
+app.use(requestTimeout);
+app.use(haltOnTimeout);
+
 app.listen(PORT, () => {
   console.log("SERVER running on PORT ", PORT);
 });
