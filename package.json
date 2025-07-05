@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node -r tsconfig-paths/register src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mig:gen": "node src/scripts/migrations-generator.js",
+    "mig:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/configs/datasource.ts"
   },
   "keywords": [],
   "author": "",
